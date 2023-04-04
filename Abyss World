@@ -1,0 +1,26 @@
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local CheckPoints = game:GetService("Workspace").Map.Ignore.Checkpoints -- > CheckPoints folder
+local PositionTable = { -- > Why am i making a table for the positions? Because the part of the CheckPoint does not exist since we didn't render it.
+   {Vector3.new(-49, 21414, 330), CheckPoints["Checkpoint 0: Temple of the Abyss"]},
+   {Vector3.new(-11, 21254, -105), CheckPoints["Checkpoint 1: Windmill Town"]},
+   {Vector3.new(40, 21013, -166), CheckPoints["Checkpoint 2: Moss Underhang"]},
+   {Vector3.new(-298, 20995, -412), CheckPoints["Checkpoint 3: Worker's Burrow"]},
+   {Vector3.new(-39, 20780, -595), CheckPoints["Checkpoint 4: Wooded Boundary"]},
+   {Vector3.new(-81, 20343, -786), CheckPoints["Checkpoint 5: Ruined Umbra"]},
+   {Vector3.new(-205, 20041, -185), CheckPoints["Checkpoint 6: Root Canal"]},
+   {Vector3.new(-413, 19797, -498), CheckPoints["Checkpoint 7: Cardinal Spire"]},
+   {Vector3.new(186, 19421, -79), CheckPoints["Checkpoint 8: Stagnant Pipeworks"]},
+   {Vector3.new(-411, 19156, -552), CheckPoints["Checkpoint 9: Sprouting Baths"]}}
+
+for _, v in ipairs(PositionTable) do
+   if not LocalPlayer.Checkpoints:FindFirstChild(v[2].Name) then -- > Skip if we already have the CheckPoint unlocked
+       LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v[1]) -- > We teleport to the location of the CheckPoint
+       wait(1.5) -- > We wait 1.5 seconds for the game to render
+       while not LocalPlayer.Checkpoints:FindFirstChild(v[2].Name) do -- > We fire proximity prompt in a loop if we don't have the CheckPoint unlocker
+           wait()
+           fireproximityprompt(v[2].Part.ProximityPrompt, (LocalPlayer.Character.HumanoidRootPart.Position - v[1]).Magnitude)
+           LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v[1])
+       end
+       wait()
+   end
+end
