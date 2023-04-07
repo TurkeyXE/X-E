@@ -1,0 +1,66 @@
+getgenv().on = true
+local CurrentPosition = CFrame.new(-148.294479, 163.947861, 118.18718, -0.0564422682, 8.5809404e-08, -0.998405874, -3.49204576e-08, 1, 8.79205544e-08, 0.998405874, 3.98272242e-08, -0.0564422682)
+local ifsafe = false
+if game:GetService("Workspace").Lobby:FindFirstChild("InvisWalls") then
+    game:GetService("Workspace").Lobby.InvisWalls:Destroy()
+end  
+local function getPlayerCharacter()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    return character
+end    
+local function getCurrentMap()
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+        if v:IsA("Model") and v.Name == "Spawns" and v.Parent.Name ~= "Lobby" then
+           return v.Parent
+        end    
+    end    
+end  
+local function checkMap()
+    local map = getCurrentMap()
+    if type(map) == "nil" then
+        repeat map = getCurrentMap() wait() until type(map) ~= "nil"
+    end   
+    return true
+end
+local function getEgg()
+if checkMap() then
+for i,v in pairs(getCurrentMap():GetDescendants()) do
+    if v ~= nil and v then
+    if v.Name == "CoinType" and v.Parent.Name ~= "CollectedCoin" then
+        if v.Parent:FindFirstChild("Coin") then
+        if v.Parent.Coin:FindFirstChild("RareEffect") and v.Parent.Coin.Transparency <= 0 then
+            repeat
+            getPlayerCharacter():WaitForChild("HumanoidRootPart").CFrame = v.Parent.Coin.CFrame
+            wait()
+            until
+            not v.Parent:FindFirstChild("Coin")
+            getPlayerCharacter():WaitForChild("HumanoidRootPart").CFrame = CurrentPosition
+        end 
+        end
+    end  
+    end
+end 
+end
+ifsafe = true
+end
+game.StarterGui:SetCore("SendNotification", {
+	Title = "Loaded";
+	Text = "Offer by X/E";
+})
+game.StarterGui:SetCore("SendNotification", {
+	Title = "Made By";
+	Text = "๑˚・Turkey⁉#4932";
+})
+while true do
+    if on then
+getEgg()
+repeat wait() until ifsafe
+if  getPlayerCharacter():WaitForChild("HumanoidRootPart").CFrame ~= CurrentPosition then
+    getPlayerCharacter():WaitForChild("HumanoidRootPart").CFrame = CurrentPosition
+end    
+    ifsafe = false
+    else
+        break
+    end    
+end
