@@ -1,0 +1,112 @@
+local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/HMECODES/customLib/main/MecurySFX"))()
+local plr = game.Players.LocalPlayer
+local version = 'v2'
+local GUI = Mercury:Create{
+    Name = "nigga " .. version,
+    Size = UDim2.fromOffset(600, 400),
+    Theme = Mercury.Themes.Dark,
+    Link = "https://discord.gg/tb3zNv2Cqm"
+}
+GUI:Credit{
+	Name = "nigga",
+	Description = "stfu nigga",
+	V3rm = "nigganov3rm",
+	Discord = "SakuraAspe#1684"
+}
+local Tab = GUI:Tab{
+	Name = "functions bozo",
+	Icon = "rbxassetid://8569322835"
+}
+Tab:Toggle{
+	Name = "auto rep",
+	StartingState = false,
+	Description = 'stfu nigga no desc for u',
+	Callback = function(state) 
+        autorep(state)
+    end
+}
+Tab:Toggle{
+	Name = "auto small size",
+	StartingState = false,
+	Description = 'stfu nigga no desc for u',
+	Callback = function(state) 
+        autosmall(state)
+    end
+}
+Tab:Toggle{
+	Name = "muslce king safe zone",
+	StartingState = false,
+	Description = 'stfu nigga no desc for u',
+	Callback = function(state) 
+        wtfitworks(state)
+    end
+}
+
+
+Tab:Button{
+	Name = "remove brawl thing",
+	Description = nil,
+	Callback = function() 
+        game:GetService("Players").Crystixan.PlayerGui.gameGui.brawlJoinLabel:Destroy()
+    end
+}
+function autorep(nig)
+    _G.autorepping = nig; --state 
+
+    while _G.autorepping == true do
+        local args = {
+            [1] = "rep",
+            [2] = workspace.machinesFolder:FindFirstChild("Frost Press").interactSeat -- just a random
+        }
+            
+        game:GetService("Players").LocalPlayer.muscleEvent:FireServer(unpack(args))
+        wait(.1)
+    end
+end
+function autosmall(fuck)
+    _G.aaa = fuck
+    while _G.aaa == true do
+        local args = {[1] = "changeSize",[2] = 2}
+        game:GetService("ReplicatedStorage").rEvents.changeSpeedSizeRemote:InvokeServer(unpack(args))
+        wait(5)
+    end
+end
+function wtfitworks(sadad)
+    _G.a = sadad
+    while _G.a ==true do
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-8768.96875, 260.300018, -5863.37402, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+        wait(.5)
+    end
+end
+
+
+
+
+
+
+--anti afk
+local GC = getconnections or get_signal_cons
+local localplayer = game.Players.LocalPlayer
+if GC then
+    for i, v in pairs(GC(localplayer.Idled)) do
+        if v["Disable"] then
+            v["Disable"](v)
+        elseif v["Disconnect"] then
+            v["Disconnect"](v)
+        end
+    end
+else
+    localplayer.Idled:Connect(
+        function()
+            local VirtualUser = game:GetService("VirtualUser")
+            VirtualUser:CaptureController()
+            VirtualUser:ClickButton2(Vector2.new())
+        end
+    )
+end
+GUI:Notification{
+	Title = "Notification",
+	Text = "Anti Afk enabled",
+	Duration = 3,
+	Callback = function() end
+}
