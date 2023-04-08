@@ -3,14 +3,12 @@ local Window = Library.CreateLib("X/E - Adopt Me!", "BloodTheme")
 
 -- MAIN
 local Main = Window:NewTab("Main")
-local MainSection  =  Main:NewSection("Autofarm")
+local MainSection  =  Main:NewSection("Main Function")
 
 MainSection:NewButton("Get Eggs", "Claim All The Eggs Around You", function()
        loadstring(game:HttpGet('https://pastebin.com/raw/2nd188jk'))()
 end)
-MainSection:NewButton("Stop", "Stop getting money", function()
-       loadstring(game:HttpGet('https://pastebin.com/raw/UvFrZvB0'))()
-end)
+
 -- Credit
 local Main = Window:NewTab("Credits")
 local MainSection  =  Main:NewSection("X/E [Script Server]")
