@@ -2,16 +2,16 @@ local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/HMECO
 local plr = game.Players.LocalPlayer
 local version = 'v2'
 local GUI = Mercury:Create{
-    Name = "nigga " .. version,
+    Name = "X/E" .. version,
     Size = UDim2.fromOffset(600, 400),
     Theme = Mercury.Themes.Dark,
-    Link = "https://discord.gg/tb3zNv2Cqm"
+    Link = ""
 }
 GUI:Credit{
-	Name = "nigga",
-	Description = "stfu nigga",
-	V3rm = "nigganov3rm",
-	Discord = "SakuraAspe#1684"
+	Name = "X/E",
+	Description = "",
+	V3rm = "",
+	Discord = ""
 }
 local Tab = GUI:Tab{
 	Name = "functions bozo",
