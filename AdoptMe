@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("X/E - Adopt and Raise a Cute Baby!", "BloodTheme")
+local Window = Library.CreateLib("X/E - Adopt Me!", "BloodTheme")
 
 -- MAIN
 local Main = Window:NewTab("Main")
