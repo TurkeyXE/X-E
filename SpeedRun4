@@ -1,0 +1,21 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("X/E - Speed Run 4", "BloodTheme")
+
+-- MAIN
+local Main = Window:NewTab("Main")
+local MainSection  =  Main:NewSection("Autofarm")
+
+MainSection:NewButton("Autofarm", "Claim All Levels", function()
+       loadstring(game:HttpGet('https://pastebin.com/raw/Br1W6UBK'))()
+end)
+MainSection:NewButton("Stop", "Stop Farming", function()
+       loadstring(game:HttpGet('https://pastebin.com/raw/qtB6qjLY'))()
+end)
+MainSection:NewButton("Leave", "Leave game incase it laggy", function()
+       game.Players.LocalPlayer:Kick("Disconnected")
+end)
+
+-- Credit
+local Main = Window:NewTab("Credits")
+local MainSection  =  Main:NewSection("X/E [Script Server]")
+local MainSection  =  Main:NewSection("Made by ๑˚・Turkey⁉#4932")
