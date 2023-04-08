@@ -3,7 +3,7 @@ local Window = Library.CreateLib("X/E - Speed Run 4", "BloodTheme")
 
 -- MAIN
 local Main = Window:NewTab("Main")
-local MainSection  =  Main:NewSection("Autofarm")
+local MainSection  =  Main:NewSection("Main Functions")
 
 MainSection:NewButton("Autofarm", "Claim All Levels", function()
        loadstring(game:HttpGet('https://pastebin.com/raw/Br1W6UBK'))()
