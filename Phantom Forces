@@ -1,0 +1,19 @@
+syn.run_on_actor(getactors()[1], [[
+for _,v in pairs(getgc(true)) do
+    if typeof(v) == "table" then
+        if rawget(v, "unlockrank") then
+            setreadonly(v, false)
+            v.unlockrank = 0
+            v.exclusiveunlock = false
+            v.hideunlessowned = false
+            v.notinmysterybox = nil
+            v.supertest = nil
+            setreadonly(v, true)
+        elseif rawget(v, "unlockkills") then
+            setreadonly(v, false)
+            v.unlockkills = 0
+            setreadonly(v, true)
+        end
+    end
+end
+]])
