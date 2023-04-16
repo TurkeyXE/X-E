@@ -1,0 +1,22 @@
+local G =  getgenv and getgenv() or _G or shared
+G.AutoFish = true
+local ReplicatedStorage, Players, Workspace, spawn, wait = game:GetService("ReplicatedStorage"), game:GetService("Players"), game:GetService("Workspace"), task.spawn, task.wait
+local Player = Players.LocalPlayer
+local Fish = require(ReplicatedStorage["_replicationFolder"].FishingClient)
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if AutoFish then
+                Fish:StartCasting()
+                Player.Character:FindFirstChild("HumanoidRootPart", true).CFrame = CFrame.new(Workspace.Interactions.Nodes.Fishing.Zone.FishingZone.Position +Vector3.new(0,25,0))
+                if Fish.Snagged then
+                    Fish.ReelSignal:Fire()
+                    if Player.PlayerGui.FishingGui.ContainerFrame.ReelingFrame.BarLabel.InnerLabel.PointerLabel.Position.X.Scale <= Player.PlayerGui.FishingGui.ContainerFrame.ReelingFrame.BarLabel.InnerLabel.SafeBarLabel.Position.X.Scale + .02 then
+                        Fish:Click()
+                    end
+                end
+            end
+        end)
+    end
+end)
