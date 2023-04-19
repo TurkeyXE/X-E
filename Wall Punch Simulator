@@ -1,0 +1,43 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("X/E - Wall Punch Simulator", "GrapeTheme")
+
+-- MAIN
+local Main = Window:NewTab("Main")
+local MainSection  =  Main:NewSection("Main Function")
+
+MainSection:NewButton("Infinite Power", "+7999993399931313399 Per Click", function()
+       local args = {
+    [1] = game:GetService("Players").LocalPlayer,
+    [2] = 7999993399931313399 -- the money
+}
+
+game:GetService("ReplicatedStorage").GP:FireServer(unpack(args))
+end)
+
+MainSection:NewButton("Infinite Coins: ON", "+2000000000 Coins", function()
+       _G = true
+
+while wait() do
+    local args = {
+        [1] = game:GetService("Players").LocalPlayer,
+        [2] = 2000000000 -- any big number
+    }
+    game:GetService("ReplicatedStorage").NL:FireServer(unpack(args))
+end
+end)
+MainSection:NewButton("Infinite Coins: OFF", "Turn off Infinite Coins", function()
+       _G = false
+
+while wait() do
+    local args = {
+        [1] = game:GetService("Players").LocalPlayer,
+        [2] = 2000000000 -- any big number
+    }
+    game:GetService("ReplicatedStorage").NL:FireServer(unpack(args))
+end
+end)
+
+-- Credit
+local Main = Window:NewTab("Credits")
+local MainSection  =  Main:NewSection("X/E [Script Server]")
+local MainSection  =  Main:NewSection("Made by ๑˚・Turkey⁉#4932")
