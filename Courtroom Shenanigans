@@ -1,0 +1,69 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("X/E - Courtroom Shenanigans", "BloodTheme")
+
+-- MAIN
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main Function")
+
+MainSection:NewButton("Kick Tool", "Click on any player to kick them", function()
+    local tool = Instance.new("Tool")
+    tool.Name = "Kick"
+    tool.RequiresHandle = false
+    tool.CanBeDropped = false
+    tool.Parent = game.Players.LocalPlayer.Backpack
+
+    tool.Equipped:Connect(function(mouse)
+        mouse.Button1Down:Connect(function()
+            if mouse.Target and mouse.Target.Parent then
+                local model = mouse.Target.Parent
+
+                if game.Players:GetPlayerFromCharacter(model) then
+                    tool.Name = model.Name
+                    for i = 1, 20 do
+                        game:GetService("ReplicatedStorage").RemoteEvents.VoteKicked:FireServer(model.Name)
+                    end
+                end
+            end
+        end)
+    end)
+end)
+
+MainSection:NewButton("Kick All", "Kicks All Players", function()
+    for i, v in ipairs(game.Players:GetPlayers()) do
+        if v ~= game.Players.LocalPlayer then
+            for x = 1, 20 do
+                game:GetService("ReplicatedStorage").RemoteEvents.VoteKicked:FireServer(v)
+            end
+        end
+    end
+end)
+
+-- SECONDARY
+local Secondary = Window:NewTab("Miscellaneous")
+local SecondarySection = Secondary:NewSection("Miscellaneous")
+
+SecondarySection:NewButton("Fly", "Allows you to fly", function()
+    game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(11)
+end)
+
+SecondarySection:NewButton("Noclip", "Allows you to walk through walls", function()
+    game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(31)
+end)
+
+SecondarySection:NewSlider("WalkSpeed", "Sets your WalkSpeed", 200, 0, 0, function(value)
+    game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").WalkSpeed = value
+end)
+
+-- THIRD
+local Third = Window:NewTab("UI Settings")
+local ThirdSection = Third:NewSection("Settings")
+
+
+ThirdSection:NewKeybind("Toggle GUI", "Toggles the GUI on/off", Enum.KeyCode.RightShift, function()
+    Library:ToggleUI()
+end)
+
+-- CREDIT
+local Credit = Window:NewTab("Credits")
+local CreditSection = Credit:NewSection("X/E [Script Server]")
+CreditSection:NewLabel("Made by ๑˚・Turkey⁉#4932")
