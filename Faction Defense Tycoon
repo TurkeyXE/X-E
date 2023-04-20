@@ -1,0 +1,44 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("X/E - Faction Defense Tycoon", "BloodTheme")
+
+-- MAIN
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main Function")
+
+MainSection:NewButton("Infinite Money", "Make Your Money $INF", function()
+    local player = game:GetService("Players").LocalPlayer
+local args = {
+    [1] = 99e400
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("PlayerMoneyUpdate"):WaitForChild(player.Name):FireServer(unpack(args))
+end)
+
+-- SECONDARY
+local Secondary = Window:NewTab("Miscellaneous")
+local SecondarySection = Secondary:NewSection("Miscellaneous")
+
+SecondarySection:NewButton("Fly", "Allows you to fly", function()
+    game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(11)
+end)
+
+SecondarySection:NewButton("Noclip", "Allows you to walk through walls", function()
+    game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(31)
+end)
+
+SecondarySection:NewSlider("WalkSpeed", "Sets your WalkSpeed", 200, 0, 0, function(value)
+    game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").WalkSpeed = value
+end)
+
+-- THIRD
+local Third = Window:NewTab("UI Settings")
+local ThirdSection = Third:NewSection("Settings")
+
+ThirdSection:NewKeybind("Toggle GUI", "Toggles the GUI on/off", Enum.KeyCode.RightShift, function()
+    Library:ToggleUI()
+end)
+
+-- CREDIT
+local Credit = Window:NewTab("Credits")
+local CreditSection = Credit:NewSection("X/E [Script Server]")
+CreditSection:NewLabel("Made by ๑˚・Turkey⁉#4932")
