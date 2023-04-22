@@ -1,0 +1,14 @@
+getgenv().quest = true -- change to true to enable or false to disable
+
+local pgui = game.Players.LocalPlayer.PlayerGui
+local events = game:GetService("ReplicatedStorage").Events
+
+while quest do task.wait()
+    repeat events.CrowEvent:FireServer("SpawnCrow") until pgui.Main:FindFirstChild("CrowQuest")
+    task.wait(.5)
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.CrowQuest.LocalScript.RemoteEvent:FireServer("Accept")
+    task.wait(.5)
+    events.LuteEvent:FireServer("Win")
+    task.wait()
+    pgui.Main.CrowQuest.Visible = false
+end
