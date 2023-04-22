@@ -1,0 +1,4 @@
+game:GetService"RunService".RenderStepped:Connect(function()
+   game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("HackService"):WaitForChild("RF"):WaitForChild("StartHack"):InvokeServer()
+   game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("HackService"):WaitForChild("RF"):WaitForChild("EndHack"):InvokeServer()
+end)
