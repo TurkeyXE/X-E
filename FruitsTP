@@ -1,0 +1,30 @@
+_G.Condition = true -- true turns it on, false turns it off
+
+while _G.Condition == true do
+
+-- Get the "FruitSpawn" object from the Workspace
+local fruitSpawn = game.Workspace:FindFirstChild("FruitSpawn")
+
+if fruitSpawn then
+   -- Get the "SpawnedDF" object from the "FruitSpawn" object
+   local spawnedDF = fruitSpawn:FindFirstChild("SpawnedDF")
+   
+   if spawnedDF then
+       -- Get all the child objects of the "SpawnedDF" object
+       local fruits = spawnedDF:GetChildren()
+       
+       -- Loop through all the child objects
+       for i, fruit in ipairs(fruits) do
+           -- Check if the child object has a "Handle" part
+           local handle = fruit:FindFirstChild("Handle")
+           
+           if handle then
+               -- Teleport to the position of the "Handle" part
+               game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(handle.CFrame)
+           end
+       end
+   end
+end
+
+wait()
+end
