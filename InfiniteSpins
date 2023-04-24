@@ -1,0 +1,36 @@
+repeat task.wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+task.wait(5)
+
+_G.Spin = true
+
+local Name = {
+    ["Tsugikuni"] = true,
+    ["Kamado"] = true,
+}
+local Button = game:GetService("Players").LocalPlayer.PlayerGui.Gui.DevProducts.Holder.RerollClan
+local events = { "MouseButton1Click", "MouseButton1Down", "MouseButton1Up", "Activated" }
+for i, v in next, events do firesignal(Button[v]) end
+task.wait(1)
+while _G.Spin and game:GetService("Players").LocalPlayer.PlayerGui.RerollClan.RollClanFrame.Clan.Spins.Text ~= "0 Spins Left" do
+    task.wait()
+    if game:GetService("Players").LocalPlayer.PlayerGui.Gui.Gui.Moves.Frame["1"].Key.Text == "\255" then
+        if not Name[game:GetService("Players").LocalPlayer.PlayerGui.RerollClan.RollClanFrame.Clan.LName.Text] then
+            local ohString1 = "RRLastName"
+            
+            game:GetService("Players").LocalPlayer.PlayerGui.RerollClan.RollClanFrame.Clan.RRLastName.LocalScript.RR:InvokeServer(ohString1)
+            task.wait()
+            print(game:GetService("Players").LocalPlayer.PlayerGui.RerollClan.RollClanFrame.Clan.LName.Text)
+            else
+                warn("got it")
+                _G.Spin = false
+        end
+        else
+            local ohNumber1 = 1
+            local ohString2 = "\255"
+            
+            game:GetService("Players").LocalPlayer.PlayerGui.Gui.Ui.UiModule.Modules.Settings.Set:InvokeServer(ohNumber1, ohString2)
+    end
+end
+if not Name[game:GetService("Players").LocalPlayer.PlayerGui.RerollClan.RollClanFrame.Clan.LName.Text] and game:GetService("Players").LocalPlayer.PlayerGui.RerollClan.RollClanFrame.Clan.Spins.Text == "0 Spins Left" then
+   game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
+end
