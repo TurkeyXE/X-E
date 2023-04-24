@@ -1,0 +1,11 @@
+_G.Strength = true
+
+while _G.Strength do
+   local ohTable1 = {
+["Type"] = "End",
+["Npc"] = workspace.Npcs.Matsui,
+["Path"] = "LesserStrength"
+   }
+   game:GetService("ReplicatedStorage").Events.Dialogue:FireServer(ohTable1)
+   task.wait()
+end
