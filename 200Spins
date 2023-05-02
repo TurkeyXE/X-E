@@ -1,0 +1,5 @@
+game:GetService("ReplicatedStorage").Events.Dialogue:FireServer({
+["Type"] = "Continue",
+["Npc"] = workspace.Npcs.Shigeru,
+["Path"] = "Fight3"
+})
