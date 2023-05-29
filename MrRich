@@ -1,0 +1,50 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local Cartride = Instance.new("ScreenGui")
+local Mainframe = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local AutoCoins = Instance.new("TextButton")
+
+--Properties:
+
+Cartride.Name = "Cartride"
+Cartride.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Cartride.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Mainframe.Name = "Mainframe"
+Mainframe.Parent = Cartride
+Mainframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Mainframe.Position = UDim2.new(0.147735164, 0, 0.640275359, 0)
+Mainframe.Size = UDim2.new(0, 184, 0, 215)
+Mainframe.Active = true
+Mainframe.Draggable = true
+TextLabel.Parent = Mainframe
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Size = UDim2.new(0, 184, 0, 50)
+TextLabel.Font = Enum.Font.FredokaOne
+TextLabel.Text = "Mr Richs Cartride Simulator"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 16.000
+
+AutoCoins.Name = "AutoCoins"
+AutoCoins.Parent = Mainframe
+AutoCoins.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+AutoCoins.Position = UDim2.new(0, 0, 0.38139534, 0)
+AutoCoins.Size = UDim2.new(0, 184, 0, 50)
+AutoCoins.Font = Enum.Font.FredokaOne
+AutoCoins.Text = "Autofarm Coins"
+AutoCoins.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoCoins.TextSize = 27.000
+AutoCoins.MouseButton1Click:Connect(function()
+	while wait() do
+		local args = {
+			[1] = game:GetService("Players").LocalPlayer
+		}
+
+		game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Coin"):FireServer(unpack(args))
+	end
+end)
