@@ -1,0 +1,13 @@
+
+local lowestServerId = math.huge
+local lowestServerPlayers = math.huge
+
+for _, server in ipairs(game:GetService("TeleportService"):GetLocalPlayerTeleportPagingAsync("rbxasset://manifest.json")) do
+    if server.Players < lowestServerPlayers then
+        lowestServerPlayers = server.Players
+        lowestServerId = server.Id
+    end
+end
+
+game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, lowestServerId)
+
